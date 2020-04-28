@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace InsuranceInc.Core.Models
 {
@@ -18,5 +19,7 @@ namespace InsuranceInc.Core.Models
         
         [JsonPropertyName("role")]
         public string Role { get; set; }
+
+        public override string ToString() => JsonSerializer.Serialize<Client>(this);
     }
 }

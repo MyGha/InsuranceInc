@@ -9,8 +9,8 @@
     //
     public static class RoleType
     {
-        public const string User = "User";
-        public const string Admin = "Admin";
-        public const string AdminAndUsers = "Admin, User";
+        public const string User = "user";
+        public const string Admin = "admin";
+        public const string AdminOrUser = Admin + "," + User;
     }
 }

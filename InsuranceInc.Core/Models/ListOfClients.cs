@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace InsuranceInc.Core.Models
@@ -10,5 +11,7 @@ namespace InsuranceInc.Core.Models
     {
         [JsonPropertyName("clients")]
         public List<Client> Clients { get; set; }
+
+        public override string ToString() => JsonSerializer.Serialize<ListOfClients>(this);
     }
 }

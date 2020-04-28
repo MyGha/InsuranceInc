@@ -22,16 +22,16 @@ namespace InsuranceInc.WebApi.Controllers
             _clientService = clientService;
         }
 
-        // GET: api/Client/a0ece5db-cd14-4f21-812f-966633e7be86
-        [Authorize(Roles = RoleType.AdminAndUsers)]
+        // GET: api/Client/id/a0ece5db-cd14-4f21-812f-966633e7be86
+        [Authorize(Roles = RoleType.AdminOrUser)]
         [HttpGet("id/{id}", Name = "GetClientById")]
-        public async Task<ActionResult<Client>> GetClientById(string id)
+        public async Task<IActionResult> GetClientById(string id)
         {
             Client client = await _clientService.GetClientById(id);
 
             if (client == null)
             {
-                return NotFound();
+                return NotFound(client);
             }
             else
             {
@@ -39,16 +39,16 @@ namespace InsuranceInc.WebApi.Controllers
             }
         }
 
-        // GET: api/Client/Britney
-        [Authorize(Roles = RoleType.AdminAndUsers)]
+        // GET: api/Client/name/Britney
+        [Authorize(Roles = RoleType.AdminOrUser)]
         [HttpGet("name/{name}", Name = "GetClientByName")]
-        public async Task<ActionResult<Client>> GetClientByName(string name)
+        public async Task<IActionResult> GetClientByName(string name)
         {
             IEnumerable<Client> clients = await _clientService.GetClientsByName(name);
 
             if (clients == null)
             {
-                return NotFound();
+                return NotFound(clients);
             }
             else
             {

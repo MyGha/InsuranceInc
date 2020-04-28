@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 namespace InsuranceInc.Core.Models
 {
@@ -17,5 +18,7 @@ namespace InsuranceInc.Core.Models
 
         [Required]
         public string Password { get; set; }
+
+        public override string ToString() => JsonSerializer.Serialize<AuthenticateModel>(this);
     }
 }

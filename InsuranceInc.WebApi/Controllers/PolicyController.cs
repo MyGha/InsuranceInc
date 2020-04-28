@@ -31,7 +31,7 @@ namespace InsuranceInc.WebApi.Controllers
 
             if (client == null)
             {
-                return NotFound();
+                return NotFound(client);
             }
             else
             {
@@ -48,7 +48,7 @@ namespace InsuranceInc.WebApi.Controllers
 
             if (policies == null)
             {
-                return NotFound();
+                return NotFound(policies);
             }
             else
             {
