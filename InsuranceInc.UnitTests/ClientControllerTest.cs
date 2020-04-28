@@ -25,8 +25,11 @@ namespace InsuranceInc.UnitTests
         [Fact]
         public void GetClientById_NonExistingIdPassed_ReturnsNotFoundResult()
         {
+            // Arrange
+            var TestId = "UnknownID";
+
             // Act
-            var NotFoundResult = _controller.GetClientById("UnknownID");
+            var NotFoundResult = _controller.GetClientById(TestId);
 
             // Assert
             Assert.IsType<NotFoundObjectResult>(NotFoundResult.Result);
@@ -35,8 +38,11 @@ namespace InsuranceInc.UnitTests
         [Fact]
         public void GetClientById_ExistingIdPassed_ReturnsOkResult()
         {
+            // Arrange
+            var TestId = "a3b8d425-2b60-4ad7-becc-bedf2ef860bd";
+
             // Act
-            var OkResult = _controller.GetClientById("a3b8d425-2b60-4ad7-becc-bedf2ef860bd");
+            var OkResult = _controller.GetClientById(TestId);
 
             // Assert
             Assert.IsType<OkObjectResult>(OkResult.Result);
@@ -62,37 +68,42 @@ namespace InsuranceInc.UnitTests
         //-----------------------------
 
         [Fact]
-        public void GetClientByName_NonExistingIdPassed_ReturnsNotFoundResult()
+        public void GetClientByName_NonExistingNamePassed_ReturnsNotFoundResult()
         {
+            // Arrange
+            var TestName = "UnknownID";
+
             // Act
-            var NotFoundResult = _controller.GetClientByName("UnknownID");
+            var NotFoundResult = _controller.GetClientByName(TestName);
 
             // Assert
             Assert.IsType<NotFoundObjectResult>(NotFoundResult.Result);
         }
 
         [Fact]
-        public void GetClientByName_ExistingIdPassed_ReturnsOkResult()
+        public void GetClientByName_ExistingNamePassed_ReturnsOkResult()
         {
+            // Arrange
+            var TestName = "Jerry";
+
             // Act
-            var OkResult = _controller.GetClientByName("a3b8d425-2b60-4ad7-becc-bedf2ef860bd");
+            var OkResult = _controller.GetClientByName(TestName);
 
             // Assert
             Assert.IsType<OkObjectResult>(OkResult.Result);
         }
 
         [Fact]
-        public void GetClientByName_ExistingIdPassed_ReturnsRightClient()
+        public void GetClientByName_ExistingNamePassed_ReturnsRightClient()
         {
             // Arrange
-            var TestId = "a0ece5db-cd14-4f21-812f-966633e7be86";
+            var TestName = "Barnett";
 
             // Act
-     //       var OkResult = _controller.GetClientByName(TestId).Result as OkObjectResult;
+            var OkResult = _controller.GetClientByName(TestName).Result as OkObjectResult;
 
             // Assert
-            //Assert.IsType<Client>(OkResult.Value);
-            //Assert.Equal(120, (OkResult.Value).ToString().Length);
+            Assert.Equal(75, (OkResult.Value).ToString().Length);
         }
     }
 }
